@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video Frame Merge and Drop Detection</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Video Frame Merge and Drop Detection</h1>
+            <p>High-Precision Motion Consistency & Timing Audit</p>
+        </header>
+
+        <section class="upload-zone">
+            <input type="file" id="videoInput" accept="video/mp4">
+            <button id="analyzeBtn" onclick="uploadVideo()">Analyze Video</button>
+            <div id="loader" style="display:none;">
+                <div class="spinner"></div>
+                <p>Analyzing temporal vectors...</p>
+            </div>
+        </section>
+
+        <div id="statsBar" class="stats-bar" style="display: none;">
+            <div class="stat-card">
+                <span class="label">Total Frames</span>
+                <span id="totalFrames" class="value">-</span>
+            </div>
+            <div class="stat-card" style="border-left-color: #dc3545;">
+                <span class="label">Anomalies Detected</span>
+                <span id="anomalyCount" class="value">-</span>
+            </div>
+            <div class="stat-card">
+                <span class="label">Avg Frame Gap</span>
+                <span id="avgGap" class="value">-</span>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <div class="video-section">
+                <div class="video-wrapper">
+                    <video id="outputVideo" controls></video>
+                </div>
+            </div>
+            <div class="frame-controls">
+  <button class="control-btn" onclick="changeFrame(-1)" title="Previous Frame">
+        Step Back ◂
+    </button>
+    
+    <button id="playPauseBtn" class="control-btn main-action" onclick="togglePlay()">
+        Play/Pause
+    </button>
+    
+    <button class="control-btn" onclick="changeFrame(1)" title="Next Frame">
+        Step Forward ▸
+    </button>
+    <span id="currentFrameDisplay">Frame: 0</span>
+</div>
+
+            <div class="table-section">
+                <div class="table-wrapper">
+                    <table id="resultsTable">
+                        <thead>
+                            <tr>
+                                <th>Frame</th>
+                                <th>Timestamp</th>
+                                <th>Gap</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

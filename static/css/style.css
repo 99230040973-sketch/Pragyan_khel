@@ -1,0 +1,198 @@
+/* 1. Global Variables & Reset */
+:root {
+    --primary: #0064c4;
+    --primary-hover: #b30003;
+    --bg: #f4f7f6;
+    --card-bg: #ffffff;
+    --text: #2d3436;
+    --danger: #ff7675;
+    --warning: #ffeaa7;
+    --dark-grey: #ffffff;
+    --medium-grey: #636e72;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #b7e0d2;
+    color: var(--text);
+    padding: 30px;
+    margin: 0;
+}
+
+.container { 
+    max-width: 1400px; 
+    margin: auto; 
+}
+
+header { 
+    text-align: center; 
+    margin-bottom: 40px; 
+}
+
+/* 2. Layout Components */
+.upload-zone {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.stats-bar { 
+    display: flex; 
+    gap: 20px; 
+    margin-bottom: 30px; 
+}
+
+.stat-card {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 6px solid var(--primary);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.stat-card .label { 
+    display: block; 
+    font-size: 0.85rem; 
+    color: #636e72; 
+}
+
+.stat-card .value { 
+    font-size: 1.8rem; 
+    font-weight: bold; 
+}
+
+/* 3. Main Content (Video & Table) */
+.main-content {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 30px;
+}
+
+.video-wrapper {
+    background: #000;
+    border-radius: 15px 15px 0 0; /* Top rounded only to sit flush with controls */
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.table-wrapper {
+    height: 650px;
+    overflow-y: auto;
+    background: white;
+    border-radius: 15px;
+    border: 1px solid #dfe6e9;
+}
+
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+}
+
+th { 
+    position: sticky; 
+    top: 0; 
+    background: #f8f9fa; 
+    padding: 15px; 
+    text-align: left; 
+    border-bottom: 2px solid #eee; 
+}
+
+td { 
+    padding: 12px 15px; 
+    border-bottom: 1px solid #f1f1f1; 
+    font-size: 0.9rem; 
+}
+
+.warning-row { background-color: rgba(255, 118, 117, 0.15); color: #d63031; font-weight: bold; }
+.merge-row { background-color: rgba(253, 203, 110, 0.15); color: #e17055; font-weight: bold; }
+
+/* 4. Frame Controls & Buttons */
+.frame-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    background: var(--dark-grey);
+    padding: 15px;
+    border-radius: 0 0 15px 15px; /* Matches bottom of the video section */
+}
+
+/* Shared Button Styles */
+.control-btn {
+    background: var(--white);
+    color: black;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+}
+
+/* Standard Button Hover */
+.control-btn:hover {
+    background: #b2bec3;
+    transform: translateY(-1px);
+}
+
+/* Play/Pause Specific Style */
+#playPauseBtn {
+    background: var(--primary);
+    min-width: 120px;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+#playPauseBtn:hover {
+    background: var(--primary-hover);
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
+}
+
+#playPauseBtn:active {
+    transform: translateY(1px);
+}
+
+/* Current Frame Text Styling */
+#currentFrameDisplay {
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px 12px;
+    border-radius: 5px;
+    min-width: 100px;
+    text-align: center;
+}
+
+/* 5. Utility Styles */
+.spinner {
+    width: 40px; 
+    height: 40px; 
+    border: 4px solid #f3f3f3; 
+    border-top: 4px solid var(--primary);
+    border-radius: 50%; 
+    animation: spin 1s linear infinite; 
+    margin: 15px auto;
+}
+
+@keyframes spin { 
+    0% { transform: rotate(0deg); } 
+    100% { transform: rotate(360deg); } 
+}
